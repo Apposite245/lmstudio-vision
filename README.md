@@ -7,6 +7,9 @@ A ComfyUI custom node that sends an image (optional), system prompt, and user pr
 - [LM Studio](https://lmstudio.ai/) with the local server enabled
 - A vision-capable model loaded in LM Studio (e.g. LLaVA, Qwen-VL, Phi-3-vision) when using image input
 - Any model when using text-only mode
+I wanted a node that supported LMstudio as a backend with vision capabilities. Most other nodes are part of massive node packs or have too many extraneous features built in.
+
+No support will be offered if you choose to use this node, nor will there be updates or new features (most likely).
 
 ## Installation
 
