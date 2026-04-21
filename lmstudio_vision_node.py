@@ -4,6 +4,20 @@ import numpy as np
 import requests
 from PIL import Image
 
+try:
+    from server import PromptServer
+    from aiohttp import web
+
+    @PromptServer.instance.routes.get("/lmstudio_vision/models")
+    async def _route_get_models(request):
+        base_url = request.query.get("base_url")
+        if not base_url:
+            return web.json_response({"error": "base_url required"}, status=400)
+        models = _fetch_model_ids(base_url)
+        return web.json_response({"models": models})
+except Exception:
+    pass
+
 
 def _fetch_model_ids(base_url: str = "http://localhost:1234", timeout: int = 5) -> list[str]:
     try:
