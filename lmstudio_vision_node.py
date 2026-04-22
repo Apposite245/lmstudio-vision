@@ -78,6 +78,10 @@ class LMStudioVisionNode:
     CATEGORY = "LM Studio"
 
     @classmethod
+    def VALIDATE_INPUTS(cls, **kwargs):
+        return True
+
+    @classmethod
     def IS_CHANGED(cls, **kwargs):
         if kwargs.get("always_refresh", True):
             return float("nan")
@@ -135,7 +139,7 @@ class LMStudioVisionNode:
             img_b64 = base64.b64encode(buf.getvalue()).decode("utf-8")
             user_input = [
                 {"type": "image", "data_url": f"data:image/png;base64,{img_b64}"},
-                {"type": "text",  "text": user_prompt},
+                {"type": "text",  "content": user_prompt},
             ]
         else:
             user_input = user_prompt
